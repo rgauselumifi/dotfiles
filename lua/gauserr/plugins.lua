@@ -67,4 +67,13 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
 	"mbbill/undotree",
+	"sainnhe/gruvbox-material",
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
 })
