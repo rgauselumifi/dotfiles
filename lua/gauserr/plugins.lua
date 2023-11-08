@@ -27,6 +27,9 @@ require("lazy").setup({
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
+				autotag = {
+					enable = true,
+				},
 			})
 		end,
 	},
@@ -54,6 +57,7 @@ require("lazy").setup({
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
 	},
+	"windwp/nvim-ts-autotag",
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.4",
@@ -62,4 +66,5 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
+	"mbbill/undotree",
 })
