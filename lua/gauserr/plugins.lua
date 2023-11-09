@@ -76,4 +76,15 @@ require("lazy").setup({
 			require("nvim-surround").setup({})
 		end,
 	},
+	"ThePrimeagen/harpoon",
+	"github/copilot.vim",
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 })

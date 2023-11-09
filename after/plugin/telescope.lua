@@ -1,6 +1,6 @@
 require("telescope").setup({
 	defaults = {
-		preview = false,
+		preview = true,
 		mappings = {
 			i = {
 				["<C-y>"] = require("telescope.actions").select_default,
