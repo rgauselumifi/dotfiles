@@ -1,8 +1,11 @@
 local set = vim.opt
 
 set.nu = true
+set.path:append("**")
+set.clipboard:append("unnamedplus")
+set.wildmenu = true
+set.guicursor = ""
 set.relativenumber = true
-set.clipboard = "unnamedplus"
 set.mouse = "" --enable selecting text with mouse for copy/paste
 set.autoindent = true
 set.smartindent = true

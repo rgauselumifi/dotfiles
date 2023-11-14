@@ -23,13 +23,10 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "query", "javascript", "html" },
+				ensure_installed = { "lua", "vim", "vimdoc", "query", "javascript", "typescript", "tsx", "html" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
-				autotag = {
-					enable = true,
-				},
 			})
 		end,
 	},
@@ -44,13 +41,6 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	{ "L3MON4D3/LuaSnip" },
-	"jose-elias-alvarez/null-ls.nvim",
-	{
-		"stevearc/oil.nvim",
-		opts = {},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
 	"numToStr/Comment.nvim",
 	{
 		"windwp/nvim-autopairs",
@@ -86,5 +76,13 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+	},
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	"stevearc/conform.nvim",
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 })
