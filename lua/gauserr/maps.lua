@@ -2,6 +2,7 @@ local keymap = vim.keymap.set
 
 keymap("n", "Q", "<nop>")
 -- keymap("n", "<Leader>fs", "<cmd>Ex<cr>")
+keymap("i", "<C-c>", "<Esc>")
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 keymap("n", "<C-d>", "<C-d>zz")
