@@ -3,13 +3,23 @@ require("gauserr.plugins")
 require("gauserr.maps")
 require("gauserr.options")
 
--- vim.g.netrw_banner = 0
--- vim.g.netrw_winsize = 25
-vim.api.nvim_create_augroup("NetrwGroup", { clear = true })
+vim.api.nvim_create_augroup("netrw", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-	group = "NetrwGroup",
+	group = "netrw",
 	pattern = "netrw",
-	command = "setlocal bufhidden=wipe",
+	callback = function()
+		vim.opt_local.bufhidden = "wipe"
+	end,
 })
 
-vim.cmd([[colorscheme gruvbox]])
+-- function ColorMyPencils(color)
+-- 	color = color or "photon"
+-- 	vim.cmd.colorscheme(color)
+--
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
+--
+-- -- ColorMyPencils()
+--
+vim.cmd([[colorscheme torte]])

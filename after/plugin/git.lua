@@ -57,6 +57,4 @@ require("gitsigns").setup({
 	end,
 })
 
-vim.keymap.set("n", "<Leader>gg", "<cmd>Git<cr><C-w>o")
-vim.keymap.set("n", "<Leader>gl", "<cmd>Git log<cr><C-w>o")
-vim.keymap.set("n", "<Leader>gv", "<cmd>Gvdiff<cr>")
+-- vim.keymap.set("n", "<Leader>s", "<cmd>Git<cr><C-w>o")

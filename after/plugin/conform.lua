@@ -13,5 +13,3 @@ require("conform").setup({
 		lsp_fallback = true,
 	},
 })
-
-vim.keymap.set("n", "<Leader>fp", '<cmd>lua require("conform").format()<cr>')

@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -21,68 +22,19 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			local configs = require("nvim-treesitter.configs")
-
 			configs.setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "query", "javascript", "typescript", "tsx", "html" },
+				ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "tsx", "html" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true,
-						keymaps = {
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = { query = "@class.inner", desc = "select inner part of a class region" },
-							["as"] = { query = "@scope", query_group = "locals", desc = "select language scope" },
-						},
-						selection_modes = {
-							["@parameter.outer"] = "v", -- charwise
-							["@function.outer"] = "v", -- linewise
-							["@class.outer"] = "<c-v>", -- blockwise
-						},
-						include_surrounding_whitespace = true,
-					},
-					swap = {
-						enable = true,
-						swap_next = {
-							["<leader>a"] = "@parameter.inner",
-						},
-						swap_previous = {
-							["<leader>A"] = "@parameter.inner",
-						},
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["]m"] = "@function.outer",
-							["]]"] = { query = "@class.outer", desc = "Next class start" },
-						},
-						goto_next_end = {
-							["]M"] = "@function.outer",
-							["]["] = "@class.outer",
-						},
-						goto_previous_start = {
-							["[m"] = "@function.outer",
-							["[["] = "@class.outer",
-						},
-						goto_previous_end = {
-							["[M"] = "@function.outer",
-							["[]"] = "@class.outer",
-						},
-					},
-				},
 			})
 		end,
 	},
+	{ "nvim-treesitter/nvim-treesitter-context", opts = { max_lines = 7 } },
+	"JoosepAlviste/nvim-ts-context-commentstring",
+
 	{ "folke/neodev.nvim", opts = {} },
 
-	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-treesitter/nvim-treesitter-textobjects",
-	"JoosepAlviste/nvim-ts-context-commentstring",
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
@@ -90,23 +42,8 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	{ "L3MON4D3/LuaSnip" },
+	"stevearc/conform.nvim",
 	"numToStr/Comment.nvim",
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
-	},
-	"windwp/nvim-ts-autotag",
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	"tpope/vim-fugitive",
-	"lewis6991/gitsigns.nvim",
-	"mbbill/undotree",
-	"sainnhe/gruvbox-material",
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -115,23 +52,13 @@ require("lazy").setup({
 			require("nvim-surround").setup({})
 		end,
 	},
-	"ThePrimeagen/harpoon",
-	"github/copilot.vim",
 	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
-	"stevearc/conform.nvim",
-	{
-		"stevearc/oil.nvim",
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		opts = {},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	{ "windwp/nvim-ts-autotag", opts = {} },
+
+	"lewis6991/gitsigns.nvim",
+	"github/copilot.vim",
 })

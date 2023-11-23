@@ -19,13 +19,13 @@ lsp_zero.on_attach(function(client, bufnr)
 		vim.lsp.buf.type_definition()
 	end, opts)
 	vim.keymap.set("n", "gr", function()
-		vim.lsp.buf.references()
+		vim.lsp.buf.rename()
 	end, opts)
 	vim.keymap.set("n", "gs", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
 	vim.keymap.set("n", "gR", function()
-		vim.lsp.buf.rename()
+		vim.lsp.buf.references()
 	end, opts)
 	vim.keymap.set("n", "gl", function()
 		vim.diagnostic.open_float()
@@ -40,11 +40,21 @@ lsp_zero.on_attach(function(client, bufnr)
 		vim.lsp.buf.code_action()
 	end, opts)
 	vim.keymap.set("n", "<leader>li", ":LspInfo<cr>")
+	vim.keymap.set("n", "<leader>lr", ":LspRestart<cr>")
 end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "tsserver", "tailwindcss", "prismals", "lua_ls", "html", "graphql", "cssls" },
+	ensure_installed = {
+		"emmet_language_server",
+		"tsserver",
+		"tailwindcss",
+		"prismals",
+		"lua_ls",
+		"html",
+		"graphql",
+		"cssls",
+	},
 	handlers = {
 		lsp_zero.default_setup,
 		lua_ls = function()
